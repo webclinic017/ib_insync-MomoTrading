@@ -289,12 +289,12 @@ def algoTrader(bucket, maLength, exp, riskCap):
                             quant = callPurchaseQuantity(bucket[security][0], exp, riskCap)
                             callBuyOrder(bucket[security][0], exp, quant)
                         else:
-                            if bucket[security][0] not in missedHits:
+                            if [bucket[security][0], 'Daily Limit'] not in missedHits:
                                 missedHits.append([bucket[security][0], 'Daily Limit'])
                                 print('\nDaily Limit Reached.')
                                 print(f'''Missed: {missedHits}\n''')
                     else:
-                        if bucket[security][0] not in missedHits:
+                        if [bucket[security][0], 'Max Sector Allocation'] not in missedHits:
                             missedHits.append([bucket[security][0], 'Max Sector Allocation'])
                             print('\nSector Exposure at Capacity.')
                             print(f'''Missed: {missedHits}\n''')
@@ -326,7 +326,8 @@ acctMult = 1
 
 #paper trading (TWS)
 ib = IB()
-ib.connect('127.0.0.1', 7497, clientId=2)
+if ib.isConnected() == False:
+    ib.connect('127.0.0.1', 7497, clientId=2)
 
 # #paper trading (ibGateway)
 # ib = IB()
@@ -334,7 +335,7 @@ ib.connect('127.0.0.1', 7497, clientId=2)
 
 startupHitsAppend()
 print(f'''\nHits: {hits}\n''')
-dailyLimit = len(hits) + 5 #MUST BE ADJUSTED IF RESTARTED AFTER TRADE EXECUTION
+dailyLimit = len(hits)# + 5 #MUST BE ADJUSTED IF RESTARTED AFTER TRADE EXECUTION
 hitsCondensed = condenseHits()
 print(f'''Sector Exposure: {sectorExposureDict()}\n''')
 
