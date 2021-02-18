@@ -335,7 +335,7 @@ if ib.isConnected() == False:
 
 startupHitsAppend()
 print(f'''\nHits: {hits}\n''')
-dailyLimit = len(hits)# + 5 #MUST BE ADJUSTED IF RESTARTED AFTER TRADE EXECUTION
+dailyLimit = len(hits) + 5 #MUST BE ADJUSTED IF RESTARTED AFTER TRADE EXECUTION
 hitsCondensed = condenseHits()
 print(f'''Sector Exposure: {sectorExposureDict()}\n''')
 
