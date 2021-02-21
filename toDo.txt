@@ -1,0 +1,48 @@
+TO-DO LIST: (fixed missed hits glitch causing duplicates) --merge with master
+
+ADD KEYWORD ARGUMENTS (KWARGS) WHERE APPROPRIATE
+
+Qualify support and resistance levels by setting a percentage above / below range with number of days to form base for all stocks... avoid false triggers by setting up files with day tracker to ensure is base is being formed... I know what this means in my head... just have to code it... over the weekend maybe.
+
+Always turn on chartGen first as a primer to algoTrader
+
+Add total percent to secure exposure 
+
+Add rule about removing tickers temporarily with large Bollinger bands breakouts to avoid expensive option execution on rebound (pot stocks)
+
+Add // in place of modulo calculation for option purchase quantity
+
+Figure out how to get Sector Exposure to update in real time without restarting 
+Program. appendHits()?????
+
+TRANSFORM LISTS INTO TUPLES OR DICTIONARIES WHEN APPROPRIATE!!!! DON'T BE LAZY!
+
+Determine whether to use netLiquidation value or (netliquidation value - unrl gains) in risk limit calculations.
+
+Call IBKR and make sure naked option selling is restricted.
+
+Find more stocks for buckets
+
+Create Shorting Program
+
+When to turn on the program?... 10AM - 10:30AM.
+
+?Earnings... Wall Street Horizons subscription... Research
+
+?Reconnect:
+
+#start ib_insync loop
+util.startLoop()
+
+ib = IB()
+
+if ib.isConnected() == False:
+    ib.connect('127.0.0.1', 7497, clientId=23, readonly=True )
+
+
+
+
+
+********Important Git Commands:
+-git remote add origin https://github.com/Pinna3/ib_insync-MovingAverageChartGen (adds new repository address)
+-git push --set-upstream https://github.com/Pinna3/ib_insync-MovingAverageChartGen master (creates new master branch and repo on GitHub)
